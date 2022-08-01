@@ -1,3 +1,5 @@
+#Weather app
+
 Your task is to create a simple weather app in angular.
 
 - At first the data could be hardcoded, but later on use a free weather API (e.g.: https://openweathermap.org/api) or at least the json-server package (or mock server) to fake a rest API.
