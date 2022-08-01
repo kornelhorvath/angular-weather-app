@@ -1,0 +1,15 @@
+<div class="d-flex justify-content-between">
+    <div>Weather app</div>
+    <div>
+        {{cityObj.name}}, {{cityObj.lon}}, {{cityObj.lat}}
+    </div>
+    <div>
+        <span>Selected: </span>{{cityObj.id}}
+        <!--[(ngModel)]="selectedCity"    (ngModelChange)="assignCityById()" [selected]="city.id === selectedCity"-->
+        <select [(ngModel)]="cityObj">
+            <option *ngFor="let city of cities" 
+                [ngValue]="city">{{city.name}}
+            </option>
+        </select>
+    </div>
+</div>
