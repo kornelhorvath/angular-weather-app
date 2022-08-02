@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CITIES } from '../mock-cities';
 import { City } from '../city';
+import { WeatherService } from '../weather.service';
+import { Observable, of, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,29 +11,23 @@ import { City } from '../city';
 })
 export class NavBarComponent implements OnInit {
 
-  cities: City[] = CITIES;
-  selectedCity: number = 1;
-  cityObj: City = this.cities[0];
-  // = this.cities.find(c => c.id == this.selectedCity) as City
+  cities: City[] = [];
+  cityObj?: City;
+  citySub?: Subscription;
 
-
-
-  constructor() {
+  constructor(private weatherService: WeatherService) {
     
   }
 
   ngOnInit(): void {
-    
+    /*this.weatherService.getCities()
+      .subscribe(cities => this.cities = cities);*/
+    this.citySub = this.weatherService.getCities().subscribe(cities => this.cities = cities);
+    this.cityObj = this.cities[0];
   }
 
-  assignCityById(): void{
-    console.log(`Searching for city on index: ${this.selectedCity}`);
-    console.log(typeof(this.selectedCity));
-    let obj = this.cities.find(c => c.id == this.selectedCity);
-    this.cityObj = obj as City;
-    console.log(this.cityObj);
-    console.log(this.cities);
+  ngOnDestroy() {
+    this.citySub?.unsubscribe();
   }
-
 
 }
