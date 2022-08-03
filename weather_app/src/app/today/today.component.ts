@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Pipe } from '@angular/core';
+
+import { Weather } from '../weather';
+import { CURRENT } from '../mock-current-weather';
 
 @Component({
   selector: 'app-today',
@@ -7,9 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodayComponent implements OnInit {
 
+  weatherData = CURRENT;
+
   constructor() { }
 
   ngOnInit(): void {
+    //console.log(CURRENT);
   }
 
 }

@@ -1,13 +1,15 @@
-<div class="d-flex justify-content-between">
+<div class="wrapper">
 
-    <div>Weather app</div>
+    <div class="center"><span class="logo-text andele-mono">Weather app</span></div>
 
-    <div>
-        <a routerLink="/today">Today</a>
-        <span>&nbsp;|&nbsp;</span>
-        <a routerLink="/weekly">Weekly</a>
-        <span>&nbsp;|&nbsp;</span>
-        <a routerLink="/monthly">Monthly</a>
+    <div class="center">
+        <span class="links">
+            <a routerLink="/today">Today</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a routerLink="/weekly">Weekly</a>
+            <span>&nbsp;|&nbsp;</span>
+            <a routerLink="/monthly">Monthly</a>
+        </span>
     </div>
 
     <div>
@@ -16,16 +18,7 @@
             <option *ngFor="let city of cities" [ngValue]="city">{{city.name}}
             </option>
         </select>
-    </div>
-
-</div>
-
-<div class="d-flex justify-content-between">
-
-    <div></div>
-    <div></div>
-    <div>
-        {{cityObj?.name}}, {{cityObj?.lon}}, {{cityObj?.lat}}
+        <div>{{cityObj?.name}}, Lat: {{cityObj?.lat}}, Lon: {{cityObj?.lon}}</div>
     </div>
 
 </div>

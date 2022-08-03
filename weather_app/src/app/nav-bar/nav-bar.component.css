@@ -1,0 +1,25 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: minmax(100px, auto);
+    justify-items: stretch;
+    align-items: stretch;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-text{
+    font-size: 6em;
+}
+
+.links{
+    font-size: 3em; 
+}
+
+.andele-mono{
+    font-family: 'Andale Mono', monospace;
+}

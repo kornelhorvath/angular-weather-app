@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { TodayComponent } from './today/today.component';
 import { WeeklyComponent } from './weekly/weekly.component';
 import { MonthlyComponent } from './monthly/monthly.component';
+import { HistoricalComponent } from './historical/historical.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MonthlyComponent } from './monthly/monthly.component';
     NavBarComponent,
     TodayComponent,
     WeeklyComponent,
-    MonthlyComponent
+    MonthlyComponent,
+    HistoricalComponent
   ],
   imports: [
     BrowserModule,
