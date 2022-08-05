@@ -12,7 +12,7 @@ import { CurrentWeather, Weather } from './weather';
 })
 export class WeatherService {
 
-  private apiKey = '318b26c578c30c2b9c25b883aae6f989';
+  private apiKey = myConfig.apiKey;
   private apiUrl = 'https://api.openweathermap.org/data/2.5';
 
   //cityObject sharing
