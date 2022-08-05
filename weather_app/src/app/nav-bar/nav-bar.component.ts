@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CITIES } from '../mock-cities';
 import { City } from '../city';
 import { WeatherService } from '../weather.service';
-import { Observable, of, Subscription } from 'rxjs';
+import { Observable, of, Subject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,23 +10,27 @@ import { Observable, of, Subscription } from 'rxjs';
 })
 export class NavBarComponent implements OnInit {
 
-  cities: City[] = [];
-  cityObj?: City;
-  citySub?: Subscription;
-
+  cities: City[];
+  cityObj: City;
+  cityObjectSubscription: Subscription;
+  
   constructor(private weatherService: WeatherService) {
-    
+    this.cityObj = weatherService.getDefaultCity();
+    this.cities = this.weatherService.getCities();
+    this.cityObjectSubscription = this.weatherService.sharedCityObject.subscribe(data => this.cityObj = data);
   }
 
   ngOnInit(): void {
-    /*this.weatherService.getCities()
-      .subscribe(cities => this.cities = cities);*/
-    this.citySub = this.weatherService.getCities().subscribe(cities => this.cities = cities);
-    this.cityObj = this.cities[0];
+    console.log("Nav-bar component created");
   }
 
   ngOnDestroy() {
-    this.citySub?.unsubscribe();
+    this.cityObjectSubscription?.unsubscribe();
+  }
+
+  onCityObjectChange(){
+    //console.log(`Next city fired:`); console.log(this.cityObj);
+    this.weatherService.nextCityObject(this.cityObj);
   }
 
 }

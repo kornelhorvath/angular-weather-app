@@ -10,6 +10,20 @@ export class WeeklyComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log("Weekly component created");
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

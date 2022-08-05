@@ -10,6 +10,7 @@ export class MonthlyComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log("Monthly component created");
   }
 
 }

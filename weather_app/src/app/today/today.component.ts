@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Pipe } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
-import { Weather } from '../weather';
-import { CURRENT } from '../mock-current-weather';
+import { City } from '../city';
+import { CurrentWeather, Weather } from '../weather';
+import { WeatherService } from '../weather.service';
+import { Observable, Subscription, of } from 'rxjs';
 
 @Component({
   selector: 'app-today',
@@ -11,12 +12,27 @@ import { CURRENT } from '../mock-current-weather';
 })
 export class TodayComponent implements OnInit {
 
-  weatherData = CURRENT;
+  weatherData?: CurrentWeather;
+  weatherDataSubscription?: Subscription;
+  cityObj: City;
+  cityObjectSubscription: Subscription;
 
-  constructor() { }
+  constructor(private weatherService: WeatherService) {
+    this.cityObj = weatherService.getDefaultCity();
+    this.cityObjectSubscription = this.weatherService.sharedCityObject.subscribe(data => {
+      this.cityObj = data;
+      //this.weatherDataSubscription = this.weatherService.getCurrentWeather(this.cityObj.lat, this.cityObj.lon, this.weatherService.getApiKey()).subscribe(weatherData => this.weatherData = weatherData);
+    });
+    console.log("today.component: Subscribed to cityObject");
+  }
 
   ngOnInit(): void {
-    //console.log(CURRENT);
+    console.log("Today component created");
+  }
+
+  ngOnDestroy() {
+    this.cityObjectSubscription?.unsubscribe();
+    this.weatherDataSubscription?.unsubscribe();
   }
 
 }

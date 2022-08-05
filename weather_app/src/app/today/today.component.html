@@ -1,15 +1,20 @@
 <div>
     <div>
-        <span>{{ weatherData.name }},&nbsp;{{ weatherData.sys.country }}</span>
+        <span>{{ weatherData?.name }},&nbsp;{{ weatherData?.sys?.country }}</span>
     </div>
     <div>
-        <span>{{weatherData.weather[0].main}}</span>
+        <span>{{weatherData?.weather}}</span>
     </div>
     <div>
-        <span>Hőmérséklet {{weatherData.main.temp | number: '0.0-0'}}°</span>
+        <span>Hőmérséklet {{weatherData?.main?.temp | number: '0.0-0'}}°</span>
     </div>
     <div>
-        <span>Hőrérzet {{weatherData.main.feels_like | number: '0.0-0'}}°</span>
+        <span>Hőrérzet {{weatherData?.main?.feels_like | number: '0.0-0'}}°</span>
     </div>
+
+    <div>{{cityObj.name}}</div>
+    <div>{{cityObj.lon}}</div>
+    <div>{{cityObj.lat}}</div>
+    <div>{{cityObj.id}}</div>
     
 </div>

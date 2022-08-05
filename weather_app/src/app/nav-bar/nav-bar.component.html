@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper fill-parent">
 
     <div class="center"><span class="logo-text andele-mono">Weather app</span></div>
 
@@ -13,12 +13,12 @@
     </div>
 
     <div>
-        <span>Selected: </span>{{cityObj?.id}}
-        <select [(ngModel)]="cityObj">
+        <span>Selected: </span>{{cityObj.id}}
+        <select [(ngModel)]="cityObj" (ngModelChange)="onCityObjectChange()">
             <option *ngFor="let city of cities" [ngValue]="city">{{city.name}}
             </option>
         </select>
-        <div>{{cityObj?.name}}, Lat: {{cityObj?.lat}}, Lon: {{cityObj?.lon}}</div>
+        <div>{{cityObj.name}}, Lat: {{cityObj.lat}}, Lon: {{cityObj.lon}}</div>
     </div>
 
 </div>

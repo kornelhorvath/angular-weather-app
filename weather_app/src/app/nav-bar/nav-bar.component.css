@@ -23,3 +23,8 @@
 .andele-mono{
     font-family: 'Andale Mono', monospace;
 }
+
+.fill-parent{
+    height: 100%;
+    width: 100%;
+}
