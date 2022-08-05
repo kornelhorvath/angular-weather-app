@@ -1,24 +1,30 @@
 <div class="wrapper fill-parent">
 
-    <div class="center"><span class="logo-text andele-mono">Weather app</span></div>
+    <div class="center logo-picture">
+        <span class="logo-text andele-mono">Weather app</span>
+    </div>
 
     <div class="center">
         <span class="links">
+            <span>&nbsp;|&nbsp;</span>
             <a routerLink="/today">Today</a>
             <span>&nbsp;|&nbsp;</span>
             <a routerLink="/weekly">Weekly</a>
             <span>&nbsp;|&nbsp;</span>
             <a routerLink="/monthly">Monthly</a>
+            <span>&nbsp;|&nbsp;</span>
         </span>
     </div>
 
-    <div>
-        <span>Selected: </span>{{cityObj.id}}
-        <select [(ngModel)]="cityObj" (ngModelChange)="onCityObjectChange()">
-            <option *ngFor="let city of cities" [ngValue]="city">{{city.name}}
+    <div class="center">
+        <!--<span>Selected: </span>{{cityObj.id}}-->
+        <select class="mySelect andele-mono" [(ngModel)]="cityObj" (ngModelChange)="onCityObjectChange()">
+            <option *ngFor="let city of cities" [ngValue]="city">{{city.name}},{{city.code}}
             </option>
         </select>
-        <div>{{cityObj.name}}, Lat: {{cityObj.lat}}, Lon: {{cityObj.lon}}</div>
+        <!--<div>{{cityObj.name}}</div>
+        <div>Lat: {{cityObj.lat}}</div>
+        <div>Lon: {{cityObj.lon}}</div>-->
     </div>
 
 </div>

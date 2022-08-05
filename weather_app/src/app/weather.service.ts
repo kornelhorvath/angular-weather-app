@@ -7,12 +7,14 @@ import { City } from './city';
 import { CITIES } from './mock-cities';
 import { CurrentWeather, Weather } from './weather';
 
+import * as myConfig from './config';
+
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherService {
 
-  private apiKey = myConfig.apiKey;
+  private apiKey = myConfig.config.apiKey;
   private apiUrl = 'https://api.openweathermap.org/data/2.5';
 
   //cityObject sharing

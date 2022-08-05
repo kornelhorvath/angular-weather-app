@@ -4,6 +4,10 @@
     grid-auto-rows: minmax(100px, auto);
     justify-items: stretch;
     align-items: stretch;
+    margin: 0;
+    padding: 0;
+
+    background-color: #98B4D4;
 }
 
 .center {
@@ -12,19 +16,45 @@
     align-items: center;
 }
 
-.logo-text{
+.logo-text {
     font-size: 6em;
+    text-decoration: none;
 }
 
-.links{
-    font-size: 3em; 
+.logo-picture{
+    background-image: url(../../assets/pictures/cloud-icon.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
 }
 
-.andele-mono{
+.links {
+    font-size: 3em;
+}
+
+.andele-mono {
     font-family: 'Andale Mono', monospace;
 }
 
-.fill-parent{
+.fill-parent {
     height: 100%;
     width: 100%;
+}
+
+a{
+    color: #00659f;
+}
+a:hover{
+    color: #007cc3;
+}
+
+.mySelect{
+    width: 7em;
+    height: 2em;
+    font-size: 3em;
+    background-color: #43a9e4;
+    border-radius: 20px;
+    text-align-last: center;
+    text-shadow: 0px 0px 0px black;
+    text-align: justify;
 }
