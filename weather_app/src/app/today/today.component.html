@@ -3,7 +3,7 @@
         <span>{{ weatherData?.name }},&nbsp;{{ weatherData?.sys?.country }}</span>
     </div>
     <div>
-        <span>{{weatherData?.weather}}</span>
+        <span *ngFor="let data of weatherData?.weather">{{data.id}} {{data.main}} {{data.description}} {{data.icon}}</span>
     </div>
     <div>
         <span>Hőmérséklet {{weatherData?.main?.temp | number: '0.0-0'}}°</span>
