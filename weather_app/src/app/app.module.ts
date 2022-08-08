@@ -11,6 +11,8 @@ import { WeeklyComponent } from './weekly/weekly.component';
 import { MonthlyComponent } from './monthly/monthly.component';
 import { HistoricalComponent } from './historical/historical.component';
 import { HttpClientModule } from '@angular/common/http';
+import { GetByKeyPipe } from './get-by-key.pipe';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     TodayComponent,
     WeeklyComponent,
     MonthlyComponent,
-    HistoricalComponent
+    HistoricalComponent,
+    GetByKeyPipe
   ],
   imports: [
     HttpClientModule,

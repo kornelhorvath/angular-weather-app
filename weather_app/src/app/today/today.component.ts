@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { City } from '../city';
-import { CurrentWeather, Weather } from '../weather';
+import { CurrentWeather, HourlyWeather, Rain, Weather } from '../weather';
 import { WeatherService } from '../weather.service';
 import { Observable, Subscription, of } from 'rxjs';
+import { CURRENT, HOURLY } from '../mock-current-weather';
 
 @Component({
   selector: 'app-today',
@@ -12,7 +13,8 @@ import { Observable, Subscription, of } from 'rxjs';
 })
 export class TodayComponent implements OnInit {
 
-  weatherData?: CurrentWeather;
+  forecast?: HourlyWeather = HOURLY;
+  weatherData?: CurrentWeather = CURRENT;
   weatherDataSubscription?: Subscription;
   cityObj: City;
   cityObjectSubscription: Subscription;

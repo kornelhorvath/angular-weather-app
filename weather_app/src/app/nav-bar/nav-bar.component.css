@@ -8,6 +8,9 @@
     padding: 0;
 
     background-color: #98B4D4;
+    background-image: url(../../assets//pictures/nav_bg.jpg);
+    background-repeat: repeat-x;
+    background-position: center;
 }
 
 .center {
@@ -25,7 +28,8 @@
     background-image: url(../../assets/pictures/cloud-icon.png);
     background-repeat: no-repeat;
     background-position: center;
-    background-size:cover;
+    background-size: cover;
+    background-size: 55% 90%;
 }
 
 .links {
@@ -42,8 +46,12 @@
 }
 
 a{
-    color: #00659f;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.65);
+    border-radius: 15px;
+    padding: 10px;
 }
+
 a:hover{
     color: #007cc3;
 }

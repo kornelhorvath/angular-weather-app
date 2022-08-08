@@ -1,5 +1,5 @@
-<div>
-    <div>
+<div class="wrapper">
+    <!--<div>
         <span>{{ weatherData?.name }},&nbsp;{{ weatherData?.sys?.country }}</span>
     </div>
     <div>
@@ -10,11 +10,36 @@
     </div>
     <div>
         <span>Hőrérzet {{weatherData?.main?.feels_like | number: '0.0-0'}}°</span>
+    </div>-->
+
+
+    <div class="current">
+        <div>{{cityObj.name}}</div>
+        <div>{{cityObj.lon}}</div>
+        <div>{{cityObj.lat}}</div>
+        <div>
+            <span>{{ weatherData?.name }},&nbsp;{{ weatherData?.sys?.country }}</span>
+        </div>
+        <div>
+            <span *ngFor="let data of weatherData?.weather">{{data.id}} {{data.main}} {{data.description}}
+                {{data.icon}}</span>
+        </div>
+        <div>
+            <span>Hőmérséklet {{weatherData?.main?.temp | number: '0.0-0'}}°</span>
+        </div>
+        <div>
+            <span>Hőrérzet {{weatherData?.main?.feels_like | number: '0.0-0'}}°</span>
+        </div>
     </div>
 
-    <div>{{cityObj.name}}</div>
-    <div>{{cityObj.lon}}</div>
-    <div>{{cityObj.lat}}</div>
-    <div>{{cityObj.id}}</div>
-    
+    <div class="hourly hourly-row">
+        <div *ngFor="let data of forecast?.list | slice:0:8" class="hourly-column">
+            <div>{{data.main.temp}}</div>
+            <div>{{data.dt_txt | date:'EEEE'}}</div>
+            <div>{{data.dt_txt | date:'HH:mm'}}</div>
+            <div><img alt={{data.weather[0].main}} src="//openweathermap.org/img/wn/{{data.weather[0].icon}}@2x.png"></div>
+            <div class="hourly-rain" *ngIf="data?.rain">{{data.rain | getByKey: "3h"}}</div>
+        </div>
+    </div>
+
 </div>

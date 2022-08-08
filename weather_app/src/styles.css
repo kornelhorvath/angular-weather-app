@@ -6,9 +6,8 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-/*div{
+div{
     -webkit-box-shadow:inset 0px 0px 0px 1px lightblue;
     -moz-box-shadow:inset 0px 0px 0px 1px lightblue;
-    box-shadow:inset 0px 0px 0px 1px lightblue;
-}*/
-
+    box-shadow:inset 0px 0px 0px 0.5px grey;
+}

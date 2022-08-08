@@ -1,0 +1,33 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    justify-items: stretch;
+    align-items: stretch;
+    margin: 0;
+    padding: 0;
+}
+
+.current {
+    grid-column: 3/11;
+    grid-row: 2/5;
+}
+
+.hourly {
+    grid-column: 3/11;
+    grid-row: 6/10;
+}
+
+.hourly-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+.hourly-column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}
