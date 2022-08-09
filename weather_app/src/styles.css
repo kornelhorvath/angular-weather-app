@@ -11,3 +11,28 @@ div{
     -moz-box-shadow:inset 0px 0px 0px 1px lightblue;
     box-shadow:inset 0px 0px 0px 0.5px grey;
 }
+
+.left-arrow{
+    grid-column: 1/1;
+    grid-row: 5/5
+}
+
+.right-arrow{
+    grid-column: 12/12;
+    grid-row: 5/5
+}
+
+.arrow-img{
+    width: 100px;
+    height: 100px;
+}
+
+.flip-image-horizontally{
+    transform: rotateY(180deg);
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -16,6 +16,8 @@ export class WeatherService {
 
   private apiKey = myConfig.config.apiKey;
   private apiUrl = 'https://api.openweathermap.org/data/2.5';
+  private weeklyApiKey = myConfig.config.weeklyApiKey;
+  private weeklyApiUrl = 'https://api.weatherapi.com/v1';
 
   //cityObject sharing
   private cityObject: BehaviorSubject<City>;
@@ -35,11 +37,23 @@ export class WeatherService {
   getApiKey(): string {
     return this.apiKey;
   }
+  getWeeklyApiKey(): string {
+    return this.weeklyApiKey;
+  }
+  getWeeklyApiUrl(): string {
+    return this.weeklyApiUrl;
+  }
 
   getCurrentWeather(lat: number, lon: number, appid: string): Observable<CurrentWeather>{
     const url = `${this.apiUrl}/weather?lat=${lat}&lon=${lon}&appid=${appid}&units=metric`;
     return this.http.get<CurrentWeather>(url).pipe(
       tap(_ => this.log(`fetched current weather on url: ${url}`))
+    );
+  }
+
+  apiRequest<T>(url: string): Observable<T>{
+    return this.http.get<T>(url).pipe(
+      tap(_ => this.log(`fetched url: ${url}`))
     );
   }
 

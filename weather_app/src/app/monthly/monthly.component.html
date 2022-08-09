@@ -1,3 +1,12 @@
-<div>
+<div class="wrapper">
     <p class="toplevel">monthly works!</p>
+    <!--<a routerLink="/weekly" class="left-arrow center">
+        <img class="arrow-img flip-image-horizontally" alt="left-arrow"
+            src="//cdn-icons-png.flaticon.com/512/271/271228.png">
+    </a>-->
+    <div class="monthly flex-grid">
+        <div class="cell" *ngFor="let data of weatherData?.forecast?.forecastday">
+            <span>{{data.date}} Avg temp: {{data.day.avgtemp_c}}°</span>
+        </div>
+    </div>
 </div>

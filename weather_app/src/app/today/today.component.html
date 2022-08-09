@@ -12,11 +12,14 @@
         <span>Hőrérzet {{weatherData?.main?.feels_like | number: '0.0-0'}}°</span>
     </div>-->
 
+    <!--<a routerLink="/weekly" class="right-arrow center">
+        <img class="arrow-img" alt="right-arrow" src="//cdn-icons-png.flaticon.com/512/271/271228.png">
+    </a>-->
 
     <div class="current">
         <div>{{cityObj.name}}</div>
-        <div>{{cityObj.lon}}</div>
-        <div>{{cityObj.lat}}</div>
+        <div>Lon: {{cityObj.lon}}</div>
+        <div>Lat: {{cityObj.lat}}</div>
         <div>
             <span>{{ weatherData?.name }},&nbsp;{{ weatherData?.sys?.country }}</span>
         </div>
