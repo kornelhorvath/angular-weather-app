@@ -9,7 +9,7 @@ body {
 div{
     -webkit-box-shadow:inset 0px 0px 0px 1px lightblue;
     -moz-box-shadow:inset 0px 0px 0px 1px lightblue;
-    box-shadow:inset 0px 0px 0px 0.5px grey;
+    box-shadow:inset 0px 0px 0px 0.1px blue;
 }
 
 .left-arrow{

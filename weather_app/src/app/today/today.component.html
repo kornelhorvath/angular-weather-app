@@ -1,42 +1,17 @@
 <div class="wrapper">
-    <!--<div>
-        <span>{{ weatherData?.name }},&nbsp;{{ weatherData?.sys?.country }}</span>
-    </div>
-    <div>
-        <span *ngFor="let data of weatherData?.weather">{{data.id}} {{data.main}} {{data.description}} {{data.icon}}</span>
-    </div>
-    <div>
-        <span>Hőmérséklet {{weatherData?.main?.temp | number: '0.0-0'}}°</span>
-    </div>
-    <div>
-        <span>Hőrérzet {{weatherData?.main?.feels_like | number: '0.0-0'}}°</span>
-    </div>-->
-
-    <!--<a routerLink="/weekly" class="right-arrow center">
-        <img class="arrow-img" alt="right-arrow" src="//cdn-icons-png.flaticon.com/512/271/271228.png">
-    </a>-->
-
+    <!-- [ngStyle]="{background: 'url(../../assets/background_pictures/' + ((weatherData?.weather) ? weatherData!.weather[0].icon + '.png' : '') + ')'}" -->
     <div class="current">
-        <div>{{cityObj.name}}</div>
-        <div>Lon: {{cityObj.lon}}</div>
-        <div>Lat: {{cityObj.lat}}</div>
-        <div>
-            <span>{{ weatherData?.name }},&nbsp;{{ weatherData?.sys?.country }}</span>
-        </div>
-        <div>
-            <span *ngFor="let data of weatherData?.weather">{{data.id}} {{data.main}} {{data.description}}
-                {{data.icon}}</span>
-        </div>
-        <div>
-            <span>Hőmérséklet {{weatherData?.main?.temp | number: '0.0-0'}}°</span>
-        </div>
-        <div>
-            <span>Hőrérzet {{weatherData?.main?.feels_like | number: '0.0-0'}}°</span>
-        </div>
+        
+        <app-city-info-panel class="current-city" [city]="cityObj"></app-city-info-panel>
+
+        <div>{{ weatherData?.name }},&nbsp;{{ weatherData?.sys?.country }}</div>
+        <div>{{weatherData!.weather[0].id}} {{weatherData!.weather[0].main}} {{weatherData!.weather[0].description}} {{weatherData!.weather[0].icon}}</div>
+        <div>Hőmérséklet {{weatherData?.main?.temp | number: '0.0-0'}}°</div>
+        <div>Hőrérzet {{weatherData?.main?.feels_like | number: '0.0-0'}}°</div>
     </div>
 
     <div class="hourly hourly-row">
-        <div *ngFor="let data of forecast?.list | slice:0:8" class="hourly-column">
+        <div *ngFor="let data of forecastData?.list | slice:0:8" class="hourly-column">
             <div>{{data.main.temp}}</div>
             <div>{{data.dt_txt | date:'EEEE'}}</div>
             <div>{{data.dt_txt | date:'HH:mm'}}</div>

@@ -37,6 +37,9 @@ export class WeatherService {
   getApiKey(): string {
     return this.apiKey;
   }
+  getApiUrl(): string {
+    return this.apiUrl;
+  }
   getWeeklyApiKey(): string {
     return this.weeklyApiKey;
   }
@@ -44,12 +47,12 @@ export class WeatherService {
     return this.weeklyApiUrl;
   }
 
-  getCurrentWeather(lat: number, lon: number, appid: string): Observable<CurrentWeather>{
+  /*getCurrentWeather(lat: number, lon: number, appid: string): Observable<CurrentWeather>{
     const url = `${this.apiUrl}/weather?lat=${lat}&lon=${lon}&appid=${appid}&units=metric`;
     return this.http.get<CurrentWeather>(url).pipe(
       tap(_ => this.log(`fetched current weather on url: ${url}`))
     );
-  }
+  }*/
 
   apiRequest<T>(url: string): Observable<T>{
     return this.http.get<T>(url).pipe(

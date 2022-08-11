@@ -12,6 +12,9 @@ import { MonthlyComponent } from './monthly/monthly.component';
 import { HistoricalComponent } from './historical/historical.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GetByKeyPipe } from './get-by-key.pipe';
+import { DatePipe } from '@angular/common';
+import { CityInfoPanelComponent } from './city-info-panel/city-info-panel.component';
+import { WeeklyListItemComponent } from './weekly-list-item/weekly-list-item.component';
 
 
 @NgModule({
@@ -22,7 +25,9 @@ import { GetByKeyPipe } from './get-by-key.pipe';
     WeeklyComponent,
     MonthlyComponent,
     HistoricalComponent,
-    GetByKeyPipe
+    GetByKeyPipe,
+    CityInfoPanelComponent,
+    WeeklyListItemComponent
   ],
   imports: [
     HttpClientModule,
@@ -31,7 +36,7 @@ import { GetByKeyPipe } from './get-by-key.pipe';
     BrowserAnimationsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

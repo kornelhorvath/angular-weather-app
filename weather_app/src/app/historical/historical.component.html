@@ -1,3 +1,19 @@
 <div>
-    <p>historical works!</p>
+    <div>{{cityObj.name}}</div>
+    <div>Lon: {{cityObj.lon}}</div>
+    <div>Lat: {{cityObj.lat}}</div>
+    <div>{{historyWeather?.location?.region}}</div>
+    <div>{{historyWeather?.location?.country}}</div>
+    <div class="weekly">
+        <div *ngFor="let data of historyWeather?.forecast?.forecastday">
+            <span>{{data.date}} Avg temp: {{data.day.avgtemp_c}}°</span>
+            <img alt={{data.day.condition.text}} [src]=data.day.condition.icon>
+            <div *ngFor="let hourly of data.hour">
+                <div>{{hourly.time}}</div>
+                <div>{{hourly.temp_c}}°
+                    <img alt={{data.day.condition.text}} [src]=hourly.condition.icon>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -18,14 +18,13 @@ export class WeeklyComponent implements OnInit {
   cityObj: City;
   cityObjectSubscription: Subscription;
 
-
   constructor(private ws: WeatherService) {
     this.cityObj = ws.getDefaultCity();
     this.cityObjectSubscription = this.ws.sharedCityObject.subscribe(data => {
       this.cityObj = data;
-      /*this.weatherDataSubscription = this.ws.apiRequest<ForecastWeather>(
+      this.weatherDataSubscription = this.ws.apiRequest<ForecastWeather>(
         `${ws.getWeeklyApiUrl()}/forecast.json?key=${ws.getWeeklyApiKey()}&q=${this.cityObj.lat},${this.cityObj.lon}&days=${this.API_REQUEST_NUMBER_OF_DAYS}`
-      ).subscribe(data => this.weatherData = data);*/
+      ).subscribe(data => this.weatherData = data);
     });
     console.log("weekly.component: Subscribed to cityObject");
   }

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { City } from '../city';
-import { CurrentWeather, HourlyWeather, Rain, Weather } from '../weather';
+import { CurrentWeather, Hour, HourlyWeather, Rain, Weather } from '../weather';
 import { WeatherService } from '../weather.service';
 import { Observable, Subscription, of } from 'rxjs';
 import { CURRENT, HOURLY } from '../mock-current-weather';
@@ -13,17 +13,19 @@ import { CURRENT, HOURLY } from '../mock-current-weather';
 })
 export class TodayComponent implements OnInit {
 
-  forecast?: HourlyWeather = HOURLY;
+  forecastData?: HourlyWeather = HOURLY;
+  forecastDataSubscription?: Subscription;
   weatherData?: CurrentWeather = CURRENT;
   weatherDataSubscription?: Subscription;
   cityObj: City;
   cityObjectSubscription: Subscription;
 
-  constructor(private weatherService: WeatherService) {
-    this.cityObj = weatherService.getDefaultCity();
-    this.cityObjectSubscription = this.weatherService.sharedCityObject.subscribe(data => {
+  constructor(private ws: WeatherService) {
+    this.cityObj = ws.getDefaultCity();
+    this.cityObjectSubscription = this.ws.sharedCityObject.subscribe(data => {
       this.cityObj = data;
-      //this.weatherDataSubscription = this.weatherService.getCurrentWeather(this.cityObj.lat, this.cityObj.lon, this.weatherService.getApiKey()).subscribe(weatherData => this.weatherData = weatherData);
+      this.weatherDataSubscription  = this.ws.apiRequest<CurrentWeather>(`${this.ws.getApiUrl()}/weather?lat=${this.cityObj.lat}&lon=${this.cityObj.lon}&appid=${this.ws.getApiKey()}&units=metric`).subscribe(data => this.weatherData = data);
+      this.forecastDataSubscription = this.ws.apiRequest<HourlyWeather>(`${this.ws.getApiUrl()}/forecast?lat=${this.cityObj.lat}&lon=${this.cityObj.lon}&appid=${this.ws.getApiKey()}&units=metric`).subscribe(data => this.forecastData = data);
     });
     console.log("today.component: Subscribed to cityObject");
   }
@@ -35,6 +37,7 @@ export class TodayComponent implements OnInit {
   ngOnDestroy() {
     this.cityObjectSubscription?.unsubscribe();
     this.weatherDataSubscription?.unsubscribe();
+    this.forecastDataSubscription?.unsubscribe();
   }
 
 }

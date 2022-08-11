@@ -1,25 +1,19 @@
 <div class="wrapper">
 
-    <div class="left-arrow">
+    <!--<div class="left-arrow">
         <img class="arrow-img flip-image-horizontally" alt="left-arrow"
             src="//cdn-icons-png.flaticon.com/512/271/271228.png">
     </div>
     <div class="right-arrow">
         <img class="arrow-img" alt="right-arrow" src="//cdn-icons-png.flaticon.com/512/271/271228.png">
-    </div>
+    </div>-->
 
-    <div class="current-city">
-        <div>{{cityObj.name}}</div>
-        <div>Lon: {{cityObj.lon}}</div>
-        <div>Lat: {{cityObj.lat}}</div>
-        <div>{{weatherData?.location?.region}}</div>
-        <div>{{weatherData?.location?.country}}</div>
-    </div>
+    <app-city-info-panel class="current-city" [city]="cityObj"></app-city-info-panel>
 
     <div class="weekly">
         <div *ngFor="let data of weatherData?.forecast?.forecastday">
-            <span>{{data.date}} Avg temp: {{data.day.avgtemp_c}}°</span>
-            <img alt={{data.day.condition.text}} [src]=data.day.condition.icon>
+            <app-weekly-list-item [forecast]="data"></app-weekly-list-item>
         </div>
     </div>
+    
 </div>
