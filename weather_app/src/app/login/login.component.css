@@ -8,17 +8,7 @@
     padding: 0;
 }
 
-.current-city{
-    grid-column: 3/11;
-    grid-row: 2/2;
-}
-
-.weekly {
-    grid-column: 3/11;
-    grid-row: 3/8;
-}
-
-.detailed{
-    grid-column: 3/11;
-    grid-row: 9/13;
+.form{
+    grid-column: 6/8;
+    grid-row: 5/6;
 }

@@ -15,6 +15,8 @@ import { GetByKeyPipe } from './get-by-key.pipe';
 import { DatePipe } from '@angular/common';
 import { CityInfoPanelComponent } from './city-info-panel/city-info-panel.component';
 import { WeeklyListItemComponent } from './weekly-list-item/weekly-list-item.component';
+import { HourlyPanelComponent } from './hourly-panel/hourly-panel.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { WeeklyListItemComponent } from './weekly-list-item/weekly-list-item.com
     HistoricalComponent,
     GetByKeyPipe,
     CityInfoPanelComponent,
-    WeeklyListItemComponent
+    WeeklyListItemComponent,
+    HourlyPanelComponent,
+    LoginComponent
   ],
   imports: [
     HttpClientModule,

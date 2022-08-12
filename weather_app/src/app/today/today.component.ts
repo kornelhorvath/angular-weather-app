@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { City } from '../city';
-import { CurrentWeather, Hour, HourlyWeather, Rain, Weather } from '../weather';
+import { CurrentWeather, ForecastWeather, Hour, HourlyWeather, Rain, Weather } from '../weather';
 import { WeatherService } from '../weather.service';
 import { Observable, Subscription, of } from 'rxjs';
 import { CURRENT, HOURLY } from '../mock-current-weather';
@@ -13,7 +13,7 @@ import { CURRENT, HOURLY } from '../mock-current-weather';
 })
 export class TodayComponent implements OnInit {
 
-  forecastData?: HourlyWeather = HOURLY;
+  forecastData!: ForecastWeather;
   forecastDataSubscription?: Subscription;
   weatherData?: CurrentWeather = CURRENT;
   weatherDataSubscription?: Subscription;
@@ -25,7 +25,10 @@ export class TodayComponent implements OnInit {
     this.cityObjectSubscription = this.ws.sharedCityObject.subscribe(data => {
       this.cityObj = data;
       this.weatherDataSubscription  = this.ws.apiRequest<CurrentWeather>(`${this.ws.getApiUrl()}/weather?lat=${this.cityObj.lat}&lon=${this.cityObj.lon}&appid=${this.ws.getApiKey()}&units=metric`).subscribe(data => this.weatherData = data);
-      this.forecastDataSubscription = this.ws.apiRequest<HourlyWeather>(`${this.ws.getApiUrl()}/forecast?lat=${this.cityObj.lat}&lon=${this.cityObj.lon}&appid=${this.ws.getApiKey()}&units=metric`).subscribe(data => this.forecastData = data);
+      //this.forecastDataSubscription = this.ws.apiRequest<HourlyWeather>(`${this.ws.getApiUrl()}/forecast?lat=${this.cityObj.lat}&lon=${this.cityObj.lon}&appid=${this.ws.getApiKey()}&units=metric`).subscribe(data => this.forecastData = data);
+      this.forecastDataSubscription = this.ws.apiRequest<ForecastWeather>(
+        `https://api.weatherapi.com/v1/forecast.json?key=${this.ws.getWeeklyApiKey()}&q=${this.cityObj.lat},${this.cityObj.lon}`
+        ).subscribe(data => this.forecastData = data);
     });
     console.log("today.component: Subscribed to cityObject");
   }

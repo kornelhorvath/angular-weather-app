@@ -10,14 +10,6 @@
         <div>Hőrérzet {{weatherData?.main?.feels_like | number: '0.0-0'}}°</div>
     </div>
 
-    <div class="hourly hourly-row">
-        <div *ngFor="let data of forecastData?.list | slice:0:8" class="hourly-column">
-            <div>{{data.main.temp}}</div>
-            <div>{{data.dt_txt | date:'EEEE'}}</div>
-            <div>{{data.dt_txt | date:'HH:mm'}}</div>
-            <div><img alt={{data.weather[0].main}} src="//openweathermap.org/img/wn/{{data.weather[0].icon}}@2x.png"></div>
-            <div class="hourly-rain" *ngIf="data?.rain">{{data.rain | getByKey: "3h"}}</div>
-        </div>
-    </div>
+    <app-hourly-panel *ngIf="forecastData?.forecast" [list]="forecastData.forecast.forecastday[0].hour" class="hourly"></app-hourly-panel>
 
 </div>

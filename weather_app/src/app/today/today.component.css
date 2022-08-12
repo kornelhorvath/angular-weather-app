@@ -18,19 +18,5 @@
 
 .hourly {
     grid-column: 3/11;
-    grid-row: 6/10;
-}
-
-.hourly-row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-
-.hourly-column {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
-    flex: 1;
+    grid-row: 6/11;
 }

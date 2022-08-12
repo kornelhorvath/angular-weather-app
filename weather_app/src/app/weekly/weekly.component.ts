@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { WEEKLY } from '../mock-current-weather';
-import { ForecastWeather } from '../weather';
+import { ForecastWeather, HourlyWeather } from '../weather';
 import { WeatherService } from '../weather.service';
 import { City } from '../city';
 
@@ -15,6 +15,8 @@ export class WeeklyComponent implements OnInit {
   readonly API_REQUEST_NUMBER_OF_DAYS: number = 7;
   weatherData?: ForecastWeather = WEEKLY;
   weatherDataSubscription?: Subscription;
+  forecastData?: ForecastWeather;
+  forecastDataSubscription?: Subscription;
   cityObj: City;
   cityObjectSubscription: Subscription;
 
@@ -36,6 +38,13 @@ export class WeeklyComponent implements OnInit {
   ngOnDestroy() {
     this.cityObjectSubscription?.unsubscribe();
     this.weatherDataSubscription?.unsubscribe();
+    this.forecastDataSubscription?.unsubscribe();
+  }
+
+  refreshHourlyPanel(date: string) {
+    this.forecastDataSubscription = this.ws.apiRequest<ForecastWeather>(
+      `https://api.weatherapi.com/v1/forecast.json?key=${this.ws.getWeeklyApiKey()}&q=${this.cityObj.lat},${this.cityObj.lon}&dt=${date}`
+      ).subscribe(data => this.forecastData = data);
   }
 
 }

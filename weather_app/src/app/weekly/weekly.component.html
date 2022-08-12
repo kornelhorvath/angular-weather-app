@@ -12,8 +12,12 @@
 
     <div class="weekly">
         <div *ngFor="let data of weatherData?.forecast?.forecastday">
-            <app-weekly-list-item [forecast]="data"></app-weekly-list-item>
+            <app-weekly-list-item [forecast]="data" (listItemClicked)="refreshHourlyPanel($event)"></app-weekly-list-item>
         </div>
+    </div>
+
+    <div *ngIf="forecastData" class="detailed">
+        <app-hourly-panel [list]="forecastData.forecast.forecastday[0].hour"></app-hourly-panel>
     </div>
     
 </div>

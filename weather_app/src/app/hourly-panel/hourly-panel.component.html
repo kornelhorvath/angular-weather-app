@@ -1,0 +1,9 @@
+<div class="hourly-row">
+    <div *ngFor="let data of list" class="hourly-column">
+        <div>{{data.temp_c}}</div>
+        <div>{{data.time | date:'EEEE'}}</div>
+        <div>{{data.time | date:'HH:mm'}}</div>
+        <div><img alt={{data.condition.text}} [src]=data.condition.icon></div>
+        <div class="hourly-rain">{{data.will_it_rain}}</div>
+    </div>
+</div>
