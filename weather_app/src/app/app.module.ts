@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TodayComponent } from './today/today.component';
 import { WeeklyComponent } from './weekly/weekly.component';
 import { MonthlyComponent } from './monthly/monthly.component';
@@ -17,6 +17,8 @@ import { CityInfoPanelComponent } from './city-info-panel/city-info-panel.compon
 import { WeeklyListItemComponent } from './weekly-list-item/weekly-list-item.component';
 import { HourlyPanelComponent } from './hourly-panel/hourly-panel.component';
 import { LoginComponent } from './login/login.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -31,14 +33,17 @@ import { LoginComponent } from './login/login.component';
     CityInfoPanelComponent,
     WeeklyListItemComponent,
     HourlyPanelComponent,
-    LoginComponent
+    LoginComponent,
+    LoginFormComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

@@ -17,15 +17,19 @@
         </span>
     </div>
 
-    <div class="center">
-        <!--<span>Selected: </span>{{cityObj.id}}-->
+    <!--<div class="center">
         <select class="mySelect andele-mono" [(ngModel)]="cityObj" (ngModelChange)="onCityObjectChange()">
             <option *ngFor="let city of cities" [ngValue]="city">{{city.name}},{{city.code}}
             </option>
         </select>
-        <!--<div>{{cityObj.name}}</div>
-        <div>Lat: {{cityObj.lat}}</div>
-        <div>Lon: {{cityObj.lon}}</div>-->
-    </div>
+    </div>-->
+
+    <mat-form-field appearance="fill" class="center">
+        <mat-label>Current city</mat-label>
+        <mat-select class="andele-mono mySelect" [(ngModel)]="cityObj" (ngModelChange)="onCityObjectChange()">
+            <mat-option *ngFor="let city of cities" [value]="city">{{city.name}},{{city.code}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
 
 </div>

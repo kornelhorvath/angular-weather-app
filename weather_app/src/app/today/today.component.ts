@@ -15,7 +15,7 @@ export class TodayComponent implements OnInit {
 
   forecastData!: ForecastWeather;
   forecastDataSubscription?: Subscription;
-  weatherData?: CurrentWeather = CURRENT;
+  weatherData?: CurrentWeather;// = CURRENT;
   weatherDataSubscription?: Subscription;
   cityObj: City;
   cityObjectSubscription: Subscription;
