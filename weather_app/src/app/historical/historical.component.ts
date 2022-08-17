@@ -18,6 +18,8 @@ export class HistoricalComponent implements OnInit {
   historyWeather?: ForecastWeather;
   historyWeatherSubscription?: Subscription;
 
+  displayedColumns: string[] = ['time', 'condition', 'temp', 'icon'];
+
   constructor(private ws: WeatherService, private datepipe: DatePipe) {
     this.cityObj = ws.getDefaultCity();
   }

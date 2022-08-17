@@ -1,15 +1,17 @@
 <div class="wrapper">
-    <!-- [ngStyle]="{background: 'url(../../assets/background_pictures/' + ((weatherData?.weather) ? weatherData!.weather[0].icon + '.png' : '') + ')'}" -->
     <div class="current">
-        
+
         <app-city-info-panel class="current-city" [city]="cityObj"></app-city-info-panel>
 
         <div>{{ weatherData?.name }},&nbsp;{{ weatherData?.sys?.country }}</div>
-        <div *ngIf="weatherData?.weather">{{weatherData!.weather[0].id}} {{weatherData!.weather[0].main}} {{weatherData!.weather[0].description}} {{weatherData!.weather[0].icon}}</div>
+        <div *ngIf="weatherData?.weather">{{weatherData!.weather[0].id}} {{weatherData!.weather[0].main}}
+            {{weatherData!.weather[0].description}} <img
+                src="//openweathermap.org/img/wn/{{weatherData!.weather[0].icon}}.png"></div>
         <div>Hőmérséklet {{weatherData?.main?.temp | number: '0.0-0'}}°</div>
         <div>Hőrérzet {{weatherData?.main?.feels_like | number: '0.0-0'}}°</div>
     </div>
 
-    <app-hourly-panel *ngIf="forecastData?.forecast" [list]="forecastData.forecast.forecastday[0].hour" class="hourly"></app-hourly-panel>
+    <app-hourly-panel *ngIf="forecastData?.forecast" [list]="forecastData.forecast.forecastday[0].hour" class="hourly">
+    </app-hourly-panel>
 
 </div>

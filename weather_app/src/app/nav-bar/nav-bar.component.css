@@ -24,7 +24,7 @@
     text-decoration: none;
 }
 
-.logo-picture{
+.logo-picture {
     background-image: url(../../assets/pictures/cloud-icon.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -45,25 +45,27 @@
     width: 100%;
 }
 
-a{
+a {
     color: black;
     background-color: rgba(255, 255, 255, 0.65);
     border-radius: 15px;
     padding: 10px;
 }
 
-a:hover{
+a:hover {
     color: #007cc3;
 }
 
-.mySelect{
+/* ng material dropdown */
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
     background-color: #43a9e4;
-    width: 15em;
-    /*
-    height: 2em;
-    font-size: 1em;
-    border-radius: 20px;
-    text-align-last: center;
-    text-shadow: 0px 0px 0px black;
-    text-align: justify;*/
+    border-radius: 4px;
+    padding: 0.75em 0.75em 0 0.75em;
+    border: 1px solid #f94747;
+    font-size: 1.5em;
+    width: 150%;
+}
+
+::ng-deep .mat-select-panel {
+    max-height: 50vh !important;
 }

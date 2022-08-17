@@ -1,10 +1,39 @@
 <div>
-    <div>{{cityObj.name}}</div>
-    <div>Lon: {{cityObj.lon}}</div>
-    <div>Lat: {{cityObj.lat}}</div>
-    <div>{{historyWeather?.location?.region}}</div>
-    <div>{{historyWeather?.location?.country}}</div>
-    <div class="weekly">
+    <!--<app-city-info-panel [city]="cityObj"></app-city-info-panel>-->
+
+    <table mat-table [dataSource]="historyWeather!.forecast.forecastday[0].hour" class="table">
+
+        <ng-container matColumnDef="time">
+            <th mat-header-cell *matHeaderCellDef> Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="condition">
+            <th mat-header-cell *matHeaderCellDef> Condition </th>
+            <td mat-cell *matCellDef="let element"> {{element.condition.text}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="temp">
+            <th mat-header-cell *matHeaderCellDef> Temp </th>
+            <td mat-cell *matCellDef="let element"> {{element.temp_c}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="icon">
+            <th mat-header-cell *matHeaderCellDef> Icon </th>
+            <td mat-cell *matCellDef="let element"> <img class="icon" alt={{element.condition.text}}
+                    [src]=element.condition.icon> </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+
+    <!--<div>{{historyWeather?.location?.region}}</div>
+    <div>{{historyWeather?.location?.country}}</div>-->
+
+    <!--<div class="weekly">
         <div *ngFor="let data of historyWeather?.forecast?.forecastday">
             <span>{{data.date}} Avg temp: {{data.day.avgtemp_c}}°</span>
             <img alt={{data.day.condition.text}} [src]=data.day.condition.icon>
@@ -15,5 +44,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>

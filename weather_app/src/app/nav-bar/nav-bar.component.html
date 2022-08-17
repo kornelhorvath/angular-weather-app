@@ -24,12 +24,28 @@
         </select>
     </div>-->
 
-    <mat-form-field appearance="fill" class="center">
+    <!--<mat-form-field appearance="fill" class="center">
         <mat-label>Current city</mat-label>
-        <mat-select class="andele-mono mySelect" [(ngModel)]="cityObj" (ngModelChange)="onCityObjectChange()">
-            <mat-option *ngFor="let city of cities" [value]="city">{{city.name}},{{city.code}}
+        <mat-select class="andele-mono" [(ngModel)]="cityObj" (ngModelChange)="onCityObjectChange()">
+            <mat-option *ngFor="let city of cities" [value]="city"><span class="bold">{{city.name}}</span><span>,
+                    {{city.code}}</span>
             </mat-option>
         </mat-select>
-    </mat-form-field>
+    </mat-form-field>-->
+
+    <form class="example-form" class="center">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>City</mat-label>
+            <input type="text" placeholder="Pick one" aria-label="City" matInput [formControl]="myControl"
+                [matAutocomplete]="auto" [(ngModel)]="cityObj" (ngModelChange)="onCityObjectChange()">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="getOptionText"
+                class="andele-mono" >
+                <mat-option *ngFor="let city of filteredOptions | async" [value]="city">
+                    <span class="bold">{{city.name}}</span><span>,
+                        {{city.code}}</span>
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </form>
 
 </div>
