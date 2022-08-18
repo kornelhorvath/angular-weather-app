@@ -1,3 +1,5 @@
+import { DatePipe } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HistoricalComponent } from './historical.component';
@@ -8,9 +10,11 @@ describe('HistoricalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HistoricalComponent ]
+      declarations: [HistoricalComponent],
+      imports: [HttpClientModule],
+      providers: [DatePipe]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(HistoricalComponent);
     component = fixture.componentInstance;

@@ -4,6 +4,7 @@ import { WeatherService } from '../weather.service';
 import { Observable, of, Subject, Subscription } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { map, startWith, tap } from 'rxjs/operators';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -20,7 +21,7 @@ export class NavBarComponent implements OnInit {
   myControl = new FormControl('');
   filteredOptions: Observable<City[]>;
 
-  constructor(private weatherService: WeatherService) {
+  constructor(private weatherService: WeatherService, private authService: AuthService) {
     this.cityObj = weatherService.getDefaultCity();
     this.cities = this.weatherService.getCities();
     this.cityObjectSubscription = this.weatherService.sharedCityObject.subscribe(data => this.cityObj = data);
@@ -51,6 +52,13 @@ export class NavBarComponent implements OnInit {
   }
   getOptionText(option: City): string {
     return `${option.name}, ${option.code}`;
+  }
+
+  logout(): void {
+    this.authService.logoutUser();
+  }
+  isLoggedIn(): boolean {
+    return this.authService.isUserLoggedIn();
   }
 
 }

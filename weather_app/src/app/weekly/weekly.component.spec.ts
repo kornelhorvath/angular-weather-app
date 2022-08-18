@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AuthService } from '../auth.service';
 
 import { WeeklyComponent } from './weekly.component';
 
@@ -8,9 +10,11 @@ describe('WeeklyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WeeklyComponent ]
+      declarations: [WeeklyComponent],
+      imports: [ HttpClientModule ],
+      providers: [ AuthService] 
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(WeeklyComponent);
     component = fixture.componentInstance;

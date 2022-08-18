@@ -23,6 +23,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { AuthService } from './auth.service';
 
 
 @NgModule({
@@ -53,7 +54,7 @@ import { MatTableModule } from '@angular/material/table';
     MatInputModule,
     MatTableModule
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

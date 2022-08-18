@@ -1,7 +1,7 @@
 <div>
     <!--<app-city-info-panel [city]="cityObj"></app-city-info-panel>-->
 
-    <table mat-table [dataSource]="historyWeather!.forecast.forecastday[0].hour" class="table">
+    <table mat-table *ngIf="historyWeather?.forecast" [dataSource]="historyWeather!.forecast.forecastday[0].hour" class="table">
 
         <ng-container matColumnDef="time">
             <th mat-header-cell *matHeaderCellDef> Date </th>

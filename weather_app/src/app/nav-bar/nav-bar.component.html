@@ -4,17 +4,20 @@
         <span class="logo-text andele-mono">Weather</span>
     </div>
 
-    <div class="center">
-        <span class="links">
+    <div class="links center">
+        <div *ngIf="!isLoggedIn()">
             <a routerLink="/login">Login</a>
+        </div>
+        <div *ngIf="isLoggedIn()">
+            <a routerLink="" (click)="logout()">Log out</a>
             <span>&nbsp;&nbsp;</span>
             <a routerLink="/today">Today</a>
             <span>&nbsp;&nbsp;</span>
             <a routerLink="/weekly">Weekly</a>
             <span>&nbsp;&nbsp;</span>
             <a routerLink="/monthly">Monthly</a>
-            <span>&nbsp;&nbsp;</span>
-        </span>
+        </div>
+
     </div>
 
     <!--<div class="center">
@@ -39,7 +42,7 @@
             <input type="text" placeholder="Pick one" aria-label="City" matInput [formControl]="myControl"
                 [matAutocomplete]="auto" [(ngModel)]="cityObj" (ngModelChange)="onCityObjectChange()">
             <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="getOptionText"
-                class="andele-mono" >
+                class="andele-mono">
                 <mat-option *ngFor="let city of filteredOptions | async" [value]="city">
                     <span class="bold">{{city.name}}</span><span>,
                         {{city.code}}</span>
